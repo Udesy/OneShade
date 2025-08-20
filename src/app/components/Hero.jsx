@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import Button from "./Button";
+import Button from "./ui/Button";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";

@@ -57,3 +57,59 @@ export const about_images = [
     content: "Aesthetic Basics",
   },
 ];
+
+export const slide_images = [
+  "/images/slide-section/image1.jpg",
+  "/images/slide-section/image2.jpg",
+  "/images/slide-section/image3.jpg",
+  "/images/slide-section/image4.jpg",
+  "/images/slide-section/image5.jpg",
+  "/images/slide-section/image6.jpg",
+  "/images/slide-section/image7.jpg",
+  "/images/slide-section/image8.jpg",
+];
+
+export const product_list = [
+  {
+    id: 1,
+    src: "/images/product-section/sweater.jpg",
+    product_name: "Winter Sweater",
+    product_price: "$ 199.00",
+  },
+  {
+    id: 2,
+    src: "/images/product-section/jacket.jpg",
+    product_name: "Denim Jackets",
+    product_price: "$ 44.00",
+  },
+  {
+    id: 3,
+    src: "/images/product-section/hoodie.jpg",
+    product_name: "Graphic Hoodie",
+    product_price: "$ 29.00",
+  },
+  {
+    id: 4,
+    src: "/images/product-section/jeans.jpg",
+    product_name: "Minimal Jeans",
+    product_price: "$ 39.00",
+  },
+  {
+    id: 5,
+    src: "/images/product-section/beanie.jpg",
+    product_name: "Premium Beanie",
+    product_price: "$ 19.00",
+  },
+  {
+    id: 6,
+    src: "/images/product-section/tshirt.jpg",
+    product_name: "Graphic T-Shirts",
+    product_price: "$ 29.00",
+  },
+  {
+    id: 7,
+    src: "/images/product-section/caps.jpg",
+    product_name: "Baseball Caps",
+    product_price: "$ 19.00",
+  },
+];

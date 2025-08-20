@@ -5,21 +5,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import React, { useRef } from "react";
+import { slide_images } from "../constants";
 
 const ScrollSection = () => {
   const containerRef = useRef(null);
   const sliderRef = useRef([]);
-
-  const images = [
-    "/images/slide-section/image1.jpg",
-    "/images/slide-section/image2.jpg",
-    "/images/slide-section/image3.jpg",
-    "/images/slide-section/image4.jpg",
-    "/images/slide-section/image5.jpg",
-    "/images/slide-section/image6.jpg",
-    "/images/slide-section/image7.jpg",
-    "/images/slide-section/image8.jpg",
-  ];
 
   useGSAP(
     () => {
@@ -76,10 +66,10 @@ const ScrollSection = () => {
   );
 
   return (
-    <div className="container" ref={containerRef}>
+    <div className="scroll-container bg-black" ref={containerRef}>
       <div className="slider">
         <div className="slider-text">
-          <h1 className="text-6xl leading-[0.75]">
+          <h1 className="text-6xl text-white leading-[0.75]">
             <span className="block transform -translate-x-14">
               Crafted to be lived in,
             </span>
@@ -89,7 +79,7 @@ const ScrollSection = () => {
             </span>
           </h1>
         </div>
-        {images.map((src, id) => (
+        {slide_images.map((src, id) => (
           <div
             className="slide"
             id={`slide-${id + 1}`}

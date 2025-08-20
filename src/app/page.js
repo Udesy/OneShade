@@ -7,6 +7,7 @@ import Lenis from "lenis";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
 import Product from "./components/Product";
+import Poster from "./components/Poster";
 
 const page = () => {
   useEffect(() => {
@@ -26,6 +27,7 @@ const page = () => {
       <About />
       <Gallery />
       <Product />
+      <Poster />
     </>
   );
 };
