@@ -1,26 +1,227 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #ffb300;
+}
+
+
+@font-face {
+  font-family: "Unbounded";
+  src: url("/fonts/Unbounded/Unbounded-VariableFont_wght.woff2") format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "M Plus 2";
+  src: url("/fonts/m_plus_2/MPLUS2-VariableFont_wght.woff2") format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-body: "M Plus 2", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Unbounded", "M Plus 2", sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #000;
+    overflow-x: hidden;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 1200vh;
+  }
+
+  .element-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slider-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    transform-style: preserve-3d;
+    perspective: 750px;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    will-change: transform, opacity;
+  }
+
+
+
+  #slide-1 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-10500px);
+    opacity: 0;
+  }
+
+  #slide-2 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-9000px);
+    opacity: 0;
+  }
+
+  #slide-3 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-7500px);
+    opacity: 0;
+  }
+
+  #slide-4 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-6000px);
+    opacity: 0;
+  }
+
+  #slide-5 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-4500px);
+    opacity: 0;
+  }
+
+  #slide-6 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-3000px);
+    opacity: 0;
+  }
+
+  #slide-7 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translateX(-50%) translateY(-50%) translateZ(-1500px);
+    opacity: 0.5;
+  }
+
+  #slide-8 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateX(-50%) translateY(-50%) translateZ(0px);
+    opacity: 1;
+  }
+
+
+
+  .body-text {
+    font-family: "M Plus 2", sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .hero-text {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 400;
+    @apply lg:text-8xl md:text-7xl sm:text-6xl text-5xl leading-tight
+  }
+
+  .section-padding {
+    @apply md:px-8 px-4 py-4
+  }
+
+  .section {
+    @apply min-h-screen w-full relative
+  }
+
+  .navItem {
+    font-family: "M Plus 2", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+  }
+
+  .navItem::before {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    height: 1.5px;
+    width: 100%;
+    border-radius: 100px;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .navItem:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .navItem:not(:hover)::before {
+    transform-origin: right;
+  }
+
 }
