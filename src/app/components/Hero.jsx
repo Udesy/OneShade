@@ -34,37 +34,50 @@ const Hero = () => {
         <Image
           src={"/images/hero.png"}
           fill
+          sizes="100vw"
+          priority
+          quality={90}
           alt="hero-image"
-          style={{ objectFit: "cover" }}
+          className="object-cover object-center"
+          style={{
+            objectFit: "cover",
+          }}
         />
       </div>
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-        <div className="relative flex flex-col space-y-10 element-center">
+        <div className="relative flex flex-col space-y-6 sm:space-y-8 md:space-y-10 element-center px-4 sm:px-6">
           <div className="hero-text flex-col element-center overflow-hidden">
             <h1
-              className="text-center overflow-hidden text-white"
+              className="text-center overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight sm:leading-24"
               ref={addToRefs}
             >
               Effortless Style.
             </h1>
             <h1
-              className="text-center overflow-hidden text-white"
+              className="text-center overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight sm:leading-24"
               ref={addToRefs}
             >
               Pure Quality
             </h1>
           </div>
-          <Button content={"Shop Now"} text={true} className={"text-2xl"} />
+          <Button
+            content={"Shop Now"}
+            text={true}
+            className={"text-xl sm:text-2xl"}
+          />
         </div>
-        <div className="absolute bottom-10 flex-row gap-2 element-center">
-          <h5 className="font-body text-white">Scroll down to Explore More</h5>
+        <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 flex flex-col sm:flex-row items-center gap-2 px-4">
+          <h5 className="font-body text-white text-sm sm:text-base">
+            Scroll down to Explore More
+          </h5>
           <div className="flex flex-row items-center justify-center">
             <span className="text-white">(</span>
-            <span className="size-4">
+            <span className="size-3 sm:size-4">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="animate-bounce"
               >
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g

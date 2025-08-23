@@ -8,6 +8,9 @@ import About from "./components/About";
 import Gallery from "./components/Gallery";
 import Product from "./components/Product";
 import Poster from "./components/Poster";
+import Testimonial from "./components/Testimonial";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
 
 const page = () => {
   useEffect(() => {
@@ -28,6 +31,9 @@ const page = () => {
       <Gallery />
       <Product />
       <Poster />
+      <Testimonial />
+      <FAQ />
+      <Footer />
     </>
   );
 };

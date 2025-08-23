@@ -35,7 +35,6 @@ const Poster = () => {
           trigger: containerRef.current,
           start: "top 20%",
           once: true,
-          markers: true, // correct property name for debugging
           fastScrollEnd: true, // correct property name
         },
       });
@@ -53,7 +52,7 @@ const Poster = () => {
       <div className="relative w-full h-full">
         <div className="absolute top-0 left-0 z-10 w-full h-full flex justify-center items-center">
           <h1
-            className="text-7xl text-center text-white leading-18 overflow-hidden"
+            className="text-7xl text-center text-white leading-22 overflow-hidden"
             ref={textRef}
           >
             We believe confidence begins <br /> with how you feel in what you{" "}

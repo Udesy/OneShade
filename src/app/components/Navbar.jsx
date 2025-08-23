@@ -20,7 +20,10 @@ const Navbar = () => {
             <ul className="flex flex-row space-x-5">
               {navItem.map(({ id, title, url }) => (
                 <li key={id}>
-                  <Link href={url} className="navItem text-white">
+                  <Link
+                    href={url}
+                    className="hover-animation text-white navItem"
+                  >
                     {title}
                   </Link>
                 </li>

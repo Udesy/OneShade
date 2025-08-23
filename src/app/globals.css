@@ -4,7 +4,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --accent: #ffb300;
 }
 
 
@@ -169,7 +168,11 @@ body {
     opacity: 1;
   }
 
-
+  .heading-text {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 400;
+    font-size: var(--text-3xl);
+  }
 
   .body-text {
     font-family: "M Plus 2", sans-serif;
@@ -200,7 +203,12 @@ body {
     display: inline-block;
   }
 
-  .navItem::before {
+  .hover-animation {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hover-animation::before {
     content: "";
     position: absolute;
     display: block;
@@ -212,15 +220,16 @@ body {
     background-color: white;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
-  .navItem:hover::before {
+  .hover-animation:hover::before {
     transform: scaleX(1);
     transform-origin: left;
   }
 
-  .navItem:not(:hover)::before {
+  .hover-animation:not(:hover)::before {
+    transform: scaleX(0);
     transform-origin: right;
   }
 
