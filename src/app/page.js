@@ -12,7 +12,7 @@ import Testimonial from "./components/Testimonial";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 
-const page = () => {
+const Page = () => {
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -38,4 +38,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

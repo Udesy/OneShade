@@ -124,7 +124,10 @@ const Footer = () => {
               Website by <span className="hover-animation">Uddeshya</span>
             </li>
           </ul>
-          <Logo footer={true} className={"w-full cursor-default mt-4 sm:mt-0"} />
+          <Logo
+            footer={true}
+            className={"w-full cursor-default mt-4 sm:mt-0"}
+          />
         </div>
       </div>
     </footer>
