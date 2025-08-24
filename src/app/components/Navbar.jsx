@@ -5,6 +5,7 @@ import Button from "./ui/Button";
 import Logo from "./Logo";
 import { navItem } from "../constants";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
@@ -38,13 +39,14 @@ const Navbar = () => {
             />
             <Button
               text={false}
-              className={"max-md:block hidden"}
+              className={"max-md:block hidden z-20"}
               isOpen={isOpen}
               onClick={() => setisOpen(!isOpen)}
             ></Button>
           </div>
         </div>
       </div>
+      {isOpen && <MobileNav />}
     </div>
   );
 };

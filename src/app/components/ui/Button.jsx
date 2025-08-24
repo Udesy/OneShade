@@ -63,7 +63,9 @@ const Button = ({ content, text, isOpen, className, onClick }) => {
   ) : (
     <button
       onClick={onClick}
-      className={`relative bg-white size-10 text-black rounded-[6px] flex flex-col items-center justify-center ${className}`}
+      className={`relative bg-white size-10 text-black rounded-[6px] flex flex-col items-center justify-center ${
+        isOpen ? "border-1.5 border-black/5" : ""
+      } ${className}`}
     >
       <span className="flex flex-col space-y-1.5 items-center justify-center">
         <motion.span

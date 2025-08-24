@@ -183,7 +183,7 @@ body {
 
   .hero-text {
     font-family: "Unbounded", sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     @apply lg:text-8xl md:text-7xl sm:text-6xl text-5xl leading-tight
   }
 
