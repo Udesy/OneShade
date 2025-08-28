@@ -47,16 +47,10 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
         <div className="relative flex flex-col space-y-6 sm:space-y-8 md:space-y-10 element-center px-4 sm:px-6">
           <div className="hero-text flex-col element-center overflow-hidden font-unbounded font-normal">
-            <h1
-              className="text-center overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl  leading-tight sm:leading-24"
-              ref={addToRefs}
-            >
+            <h1 className="text-center overflow-hidden " ref={addToRefs}>
               Effortless Style.
             </h1>
-            <h1
-              className="text-center overflow-hidden text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight sm:leading-24"
-              ref={addToRefs}
-            >
+            <h1 className="text-center overflow-hidden" ref={addToRefs}>
               Pure Quality
             </h1>
           </div>

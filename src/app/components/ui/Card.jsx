@@ -4,7 +4,7 @@ import React from "react";
 const Card = ({ src, product_name, product_price }) => {
   return (
     <div className="flex flex-col justify-center items-center my-10 cursor-pointer">
-      <div className="relative w-104 h-145 overflow-hidden group">
+      <div className="relative lg:w-[26rem] lg:h-[36.25rem] md:w-[22rem] md:h-[30rem] w-[17rem] h-[24rem] overflow-hidden group">
         <Image
           src={src}
           fill

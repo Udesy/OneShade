@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import HoverText from "./ui/HoverText";
+import { footer_1, footer_2 } from "../constants";
 
 function getISTDayAndTime() {
   const now = new Date();
@@ -31,21 +32,21 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="section section-padding h-screen bg-black">
+    <footer className="section section-padding h-screen bg-black overflow-hidden">
       <div className="w-full h-full flex flex-col justify-between">
-        <div className="w-full grid grid-cols-12 mt-8">
-          <div className="col-start-1 col-end-5 w-full space-y-10">
-            <h1 className="text-white text-2xl leading-tight text-nowrap">
+        <div className="w-full md:grid md:grid-cols-12 flex flex-col mt-8 space-y-20">
+          <div className="col-start-1 col-end-6 w-full lg:space-y-10 md:space-y-7 space-y-5">
+            <h1 className="text-white lg:text-2xl md:text-xl sm:text-lg text-sm leading-tight text-nowrap">
               Be the first to know when new <br /> pieces hit the store.
             </h1>
-            <div className="flex flex-row space-x-5">
+            <div className="flex flex-row space-x-5 w-full">
               <input
                 placeholder="Your Email Address"
-                className="bg-white rounded-sm font-body font-semibold text-[1rem] pl-3 w-93"
+                className="bg-white rounded-sm font-body font-semibold lg:text-lg md:text-sm text-xs pl-3 lg:w-110 md:w-70 lg:py-3.5 md:py-2 py-2"
               />
-              <button className="relative bg-white w-fit h-fit element-center p-2.5 rounded-full group overflow-hidden cursor-pointer">
+              <button className="relative bg-white w-auto h-auto element-center lg:p-4 md:p-2 p-2.5 rounded-full group overflow-hidden cursor-pointer">
                 <svg
-                  className="size-5 transition-transform group-hover:translate-x-full duration-300"
+                  className="lg:size-6 md:size-5 size-3 transition-transform group-hover:translate-x-12 duration-300"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@ const Footer = () => {
                   </g>
                 </svg>
                 <svg
-                  className="size-5 absolute left-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"
+                  className="lg:size-6 md:size-5 size-3 absolute left-0 -translate-x-10 group-hover:translate-x-5 transition-transform duration-300"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -91,43 +92,44 @@ const Footer = () => {
               </button>
             </div>
           </div>
-          <div className="col-start-8 flex flex-row w-fit space-x-26">
+          <div className="lg:col-start-8 md:col-start-7 flex flex-row w-fit lg:space-x-26 space-x-10">
             <div>
-              <ul className="w-full space-y-4">
-                <li className="font-body font-semibold text-white/60">
+              <ul className="w-full lg:space-y-4 md:space-y-4 space-y-1">
+                <li className="font-body font-semibold lg:text-lg md:text-sm text-xs text-white/60 mb-3">
                   Products
                 </li>
-                <HoverText text={"Street Wear"} />
-                <HoverText text={"Casual Wear"} />
-                <HoverText text={"Ethenic Wear"} />
-                <HoverText text={"Party Wear"} />
+                {footer_1.map(({ id, text }) => (
+                  <li key={id}>
+                    <HoverText text={text} />
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
-              <ul className="w-full space-y-4">
-                <li className="font-body font-semibold text-white/60">
+              <ul className="w-full lg:space-y-4 md:space-y-4 space-y-1">
+                <li className="font-body font-semibold lg:text-lg md:text-sm text-xs text-white/60 mb-3">
                   Legal Area
                 </li>
-                <HoverText text={"Terms & Condition"} />
-                <HoverText text={"Privacy & Policy"} />
+                {footer_2.map(({ id, text }) => (
+                  <li key={id}>
+                    <HoverText text={text} />
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
-        <div className="w-full mb-2">
-          <ul className="text-white w-full font-body flex flex-col sm:flex-row gap-4 sm:gap-0 items-center sm:justify-between text-center sm:text-left">
-            <li>
+        <div className="w-full mb-2 lg:text-lg md:text-sm text-xs">
+          <ul className="list-none text-white w-full font-body flex flex-row items-center justify-between text-center">
+            <li className="hidden md:block">
               <h5>2025 &copy; Oneshade All Right Reserved</h5>
             </li>
-            <li className="order-first sm:order-none">{istTime} IND</li>
+            <li>{istTime} IND</li>
             <li>
               Website by <span className="hover-animation">Uddeshya</span>
             </li>
           </ul>
-          <Logo
-            footer={true}
-            className={"w-full cursor-default mt-4 sm:mt-0"}
-          />
+          <Logo footer={true} className={"w-full cursor-default"} />
         </div>
       </div>
     </footer>

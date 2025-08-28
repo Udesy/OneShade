@@ -11,10 +11,10 @@ const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
 
   return (
-    <div className="absolute top-0 left-0 h-fit w-full z-10 section-padding">
+    <div className="absolute top-0 left-0 h-fit w-full z-50 section-padding">
       <div className="w-full h-full flex flex-row justify-between">
-        <div className="w-44 h-12 overflow-clip">
-          <Logo className={"text-black invert"} />
+        <div className="w-44 h-12 overflow-clip relative z-50">
+          <Logo className={""} isOpen={isOpen} />
         </div>
         <div className="flex flex-row items-center space-x-7">
           <div className="h-full flex items-center max-md:hidden">
@@ -46,7 +46,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {isOpen && <MobileNav />}
+      <MobileNav isOpen={isOpen} />
     </div>
   );
 };

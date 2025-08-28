@@ -12,8 +12,8 @@ const FAQ = () => {
     <section className="section-padding mt-16 mb-20">
       <div className="w-full h-full flex flex-col">
         <h1 className="heading-text">Frequently Asked Question</h1>
-        <div className="w-full flex flex-col justify-center items-end mt-14">
-          <div className="w-[70%]">
+        <div className="w-full flex flex-col justify-center lg:items-end md:items-center mt-14">
+          <div className="lg:w-[70%] w-full">
             {questions.map(({ id, question, answer }, idx) => (
               <div className="border-b-1 w-full" key={id}>
                 <button
@@ -22,7 +22,7 @@ const FAQ = () => {
                   aria-expanded={openIndex === idx}
                 >
                   <span className="w-full flex justify-between">
-                    <span className="space-x-25 text-xl">
+                    <span className="space-x-25 lg:text-xl md:text-lg text-sm">
                       <span className=" ">{`0${id}`}</span>
                       <span className="flex-1 text-left ">{question}</span>
                     </span>
@@ -66,7 +66,9 @@ const FAQ = () => {
                 </button>
                 {openIndex === idx && (
                   <div className="pb-8 pr-4 text-gray-700 animate-fade-in">
-                    <p className="font-body font-normal ml-32">{answer}</p>
+                    <p className="font-body font-normal lg:text-lg md:text-sm text-xs ml-32">
+                      {answer}
+                    </p>
                   </div>
                 )}
               </div>

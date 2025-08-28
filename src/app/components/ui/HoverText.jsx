@@ -1,8 +1,10 @@
 import React from "react";
 
-const HoverText = ({ text }) => {
+const HoverText = ({ text, className }) => {
   return (
-    <span className="relative inline-block overflow-hidden h-8 cursor-pointer group text-white text-2xl">
+    <span
+      className={`relative inline-block overflow-hidden lg:h-8 md:h-7 cursor-pointer group text-white lg:text-2xl md:text-xl sm:text-lg text-sm ${className}`}
+    >
       <span className="block transition-transform duration-300 group-hover:-translate-y-full text-nowrap">
         {text}
       </span>

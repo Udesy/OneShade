@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { slide_images } from "../constants";
 
 const ScrollSection = () => {
@@ -20,14 +20,33 @@ const ScrollSection = () => {
         containerRef.current
       );
 
-      function getInitialTransalteZ(slide) {
+      function getInitialTranslateZ(slide) {
+        // First try to get from computed style
         const style = window.getComputedStyle(slide);
         const matrix = style.transform.match(/matrix3d\((.+)\)/);
         if (matrix) {
           const values = matrix[1].split(", ");
-          return parseFloat(values[14] || 0);
+          const zValue = parseFloat(values[14] || 0);
+          if (zValue !== 0) return zValue;
         }
-        return 0;
+
+        // Fallback: get initial Z from slide ID based on CSS definitions
+        const slideId = slide.id;
+        const slideNumber = parseInt(slideId.replace("slide-", ""));
+
+        // These match your CSS initial positions
+        const initialZValues = {
+          1: -10500,
+          2: -9000,
+          3: -7500,
+          4: -6000,
+          5: -4500,
+          6: -3000,
+          7: -1500,
+          8: 0,
+        };
+
+        return initialZValues[slideNumber] || 0;
       }
 
       function mapRange(value, inMin, inMax, outMin, outMax) {
@@ -35,28 +54,46 @@ const ScrollSection = () => {
       }
 
       slides.forEach((slide) => {
-        const initialZ = getInitialTransalteZ(slide);
+        const initialZ = getInitialTranslateZ(slide);
 
         ScrollTrigger.create({
           trigger: containerRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             const progress = self.progress;
-            const zIncrement = progress * 12000;
-            const currentZ = initialZ + zIncrement;
+
+            const totalMovement = 10500;
+            const currentZ = initialZ + progress * totalMovement;
 
             let opacity;
 
-            if (currentZ > -2500) {
-              opacity = mapRange(currentZ, -2500, 0, 0.5, 1);
+            if (currentZ < -4000) {
+              // Far behind camera - invisible
+              opacity = 0;
+            } else if (currentZ < -2000) {
+              // Fade in as approaching
+              opacity = mapRange(currentZ, -4000, -2000, 0, 0.5);
+            } else if (currentZ < 0) {
+              // Approaching camera - become fully visible
+              opacity = mapRange(currentZ, -2000, 0, 0.5, 1);
+            } else if (currentZ < 1000) {
+              // Past camera but still visible
+              opacity = 1;
+            } else if (currentZ < 3000) {
+              // Moving away from camera - fade out
+              opacity = mapRange(currentZ, 1000, 3000, 1, 0);
             } else {
-              opacity = mapRange(currentZ, -5000, -2500, 0, 0.5);
+              // Too far forward - invisible
+              opacity = 0;
             }
 
-            slide.style.opacity = opacity;
+            // Clamp opacity to prevent flickering
+            opacity = Math.max(0, Math.min(1, opacity));
 
+            slide.style.opacity = opacity;
             slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`;
           },
         });
@@ -65,16 +102,25 @@ const ScrollSection = () => {
     { scope: containerRef }
   );
 
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="scroll-container bg-black" ref={containerRef}>
+    <div className="scroll-container w-full bg-black" ref={containerRef}>
       <div className="slider">
         <div className="slider-text">
-          <h1 className="text-6xl text-white leading-[0.75]">
-            <span className="block transform -translate-x-14">
+          <h1 className="lg:text-6xl md:text-5xl sm:text-3xl text-xl text-white leading-[0.75]">
+            <span className="block transform -translate-x-12">
               Crafted to be lived in,
             </span>
             <br />
-            <span className="block transform translate-x-14">
+            <span className="block transform translate-x-12">
               Designed to <span className="font-bold">stand</span> out.
             </span>
           </h1>

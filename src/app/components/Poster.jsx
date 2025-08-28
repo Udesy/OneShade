@@ -52,7 +52,7 @@ const Poster = () => {
       <div className="relative w-full h-full">
         <div className="absolute top-0 left-0 z-10 w-full h-full flex justify-center items-center">
           <h1
-            className="text-7xl text-center text-white leading-22 overflow-hidden"
+            className="lg:text-7xl md:text-6xl sm:text-5xl text-4xl text-center text-white lg:leading-19 md:leading-15 sm:leading-12 leading-10 overflow-hidden w-full "
             ref={textRef}
           >
             We believe confidence begins <br /> with how you feel in what you{" "}

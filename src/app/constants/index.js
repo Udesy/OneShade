@@ -32,28 +32,32 @@ export const about_images = [
     id: 0,
     src: Image1,
     alt: "Image1",
-    className: "relative top-0 col-start-2 col-end-5",
+    className:
+      "relative top-0 lg:col-start-2 lg:col-span-4 md:col-start-1 md:col-span-5 col-start-1 col-end-3",
     content: "Premium Essentials",
   },
   {
     id: 1,
     src: Image2,
     alt: "Image2",
-    className: "relative top-[15rem] col-start-8 col-end-12",
+    className:
+      "relative lg:top-[15rem] md:top-[8rem] top-[25rem] lg:col-start-8 lg:col-span-4 md:col-start-4 md:col-span-5 col-start-3 col-end-5",
     content: "Signature Collection",
   },
   {
     id: 2,
     src: Image3,
     alt: "Image3",
-    className: "relative top-[25rem] col-start-2 col-end-5",
+    className:
+      "relative lg:top-[25rem] md:top-[15rem] top-[27rem] lg:col-start-2 lg:col-span-4 md:col-start-1 md:col-span-5 col-start-1 col-end-3",
     content: "Seasonal Exclusives",
   },
   {
     id: 3,
     src: Image4,
     alt: "Image4",
-    className: "relative top-[35rem] col-start-8 col-end-12",
+    className:
+      "relative lg:top-[35rem] md:top-[23rem] top-[52rem] lg:col-start-8 lg:col-span-4 md:col-start-4 md:col-span-5 col-start-3 col-end-5",
     content: "Aesthetic Basics",
   },
 ];
@@ -243,5 +247,32 @@ export const questions = [
     question: "Can I update or cancel my order after placing it?",
     answer:
       "If you need to update or cancel your order, please contact our customer support team as soon as possible. We’ll do our best to accommodate your request if your order hasn’t already been processed or shipped.",
+  },
+];
+
+export const footer_1 = [
+  {
+    id: 0,
+    text: "Street Wear",
+  },
+  {
+    id: 1,
+    text: "Casual Wear",
+  },
+  {
+    id: 2,
+    text: "Ethenic Wear",
+  },
+  {
+    id: 3,
+    text: "Party Wear",
+  },
+];
+
+export const footer_2 = [
+  { id: 0, text: "Terms & Condition" },
+  {
+    id: 1,
+    text: "Privacy & Policy",
   },
 ];

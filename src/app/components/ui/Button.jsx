@@ -7,7 +7,7 @@ const Button = ({ content, text, isOpen, className, onClick }) => {
       className={`relative bg-white px-3 py-2 text-black rounded-[6px] flex flex-row flex-nowrap items-center w-fit space-x-2 cursor-pointer group ${className}`}
       onClick={onClick}
     >
-      <h1 className="text-nowrap body-text">{content}</h1>
+      <h1 className="text-nowrap body-text text-sm sm:text-lg">{content}</h1>
       <div className="w-5 h-5 overflow-hidden">
         <div
           className="flex w-[2.5rem] transition-transform duration-300 group-hover:translate-x-5"
@@ -63,9 +63,7 @@ const Button = ({ content, text, isOpen, className, onClick }) => {
   ) : (
     <button
       onClick={onClick}
-      className={`relative bg-white size-10 text-black rounded-[6px] flex flex-col items-center justify-center ${
-        isOpen ? "border-1.5 border-black/5" : ""
-      } ${className}`}
+      className={`relative bg-white size-10 text-black rounded-[6px] flex flex-col items-center justify-center ${className}`}
     >
       <span className="flex flex-col space-y-1.5 items-center justify-center">
         <motion.span
