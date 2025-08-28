@@ -41,7 +41,7 @@ const About = () => {
               <Image fill src={src} alt={alt} style={{ objectFit: "cover" }} />
             </div>
             <div className="element-center">
-              <h1 className="lg:text-3xl md:text-2xl text-sm text-nowrap">
+              <h1 className="lg:text-3xl md:text-2xl sm:text-sm text-xs md:text-nowrap text-center">
                 <sup className="mr-2">{`(0${index + 1})`}</sup>
                 {content}
               </h1>

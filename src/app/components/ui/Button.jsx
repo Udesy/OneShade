@@ -63,33 +63,41 @@ const Button = ({ content, text, isOpen, className, onClick }) => {
   ) : (
     <button
       onClick={onClick}
-      className={`relative bg-white size-10 text-black rounded-[6px] flex flex-col items-center justify-center ${className}`}
+      className={`relative ${
+        isOpen ? "bg-black text-white" : "bg-white text-black"
+      } size-10 rounded-[6px] flex flex-col items-center justify-center ${className}`}
     >
       <span className="flex flex-col space-y-1.5 items-center justify-center">
         <motion.span
-          className="block h-[2px] w-7 rounded-full bg-black"
+          className={`block h-[2px] w-7 rounded-full ${
+            isOpen ? "bg-white" : "bg-black"
+          }`}
           animate={{
             rotate: isOpen ? 45 : 0,
             y: isOpen ? 8 : 0,
           }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        />
+
+        <motion.span
+          className={`block h-[2px] w-7 rounded-full ${
+            isOpen ? "bg-white" : "bg-black"
+          }`}
+          animate={{
+            opacity: isOpen ? 0 : 1,
+          }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         />
 
         <motion.span
-          className="block h-[2px] w-7 rounded-full bg-black"
-          animate={{
-            opacity: isOpen ? 0 : 1,
-          }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-        />
-
-        <motion.span
-          className="block h-[2px] w-7 rounded-full bg-black"
+          className={`block h-[2px] w-7 rounded-full ${
+            isOpen ? "bg-white" : "bg-black"
+          }`}
           animate={{
             rotate: isOpen ? -45 : 0,
             y: isOpen ? -8 : 0,
           }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         />
       </span>
     </button>

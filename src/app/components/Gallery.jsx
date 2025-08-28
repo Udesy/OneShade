@@ -112,8 +112,11 @@ const ScrollSection = () => {
   }, []);
 
   return (
-    <div className="scroll-container w-full bg-black" ref={containerRef}>
-      <div className="slider">
+    <div
+      className="scroll-container w-full bg-black overflow-x-hidden"
+      ref={containerRef}
+    >
+      <div className="slider" style={{ width: "100%" }}>
         <div className="slider-text">
           <h1 className="lg:text-6xl md:text-5xl sm:text-3xl text-xl text-white leading-[0.75]">
             <span className="block transform -translate-x-12">

@@ -44,6 +44,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Unbounded", "M Plus 2", sans-serif;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -100,6 +101,7 @@ body {
 
   @media (max-width: 768px) {
     .scroll-container {
+      overflow-x: hidden;
       height: 800vh;
     }
 

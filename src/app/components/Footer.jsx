@@ -11,13 +11,15 @@ function getISTDayAndTime() {
     weekday: "long",
     timeZone: "Asia/Kolkata",
   });
-  const time = now.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false, // 24-hour format
-    timeZone: "Asia/Kolkata",
-  });
+  const time = now
+    .toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+      timeZone: "Asia/Kolkata",
+    })
+    .replace(/\s*(AM|PM|am|pm)$/i, "");
   return `${day} ${time}`;
 }
 
@@ -100,7 +102,12 @@ const Footer = () => {
                 </li>
                 {footer_1.map(({ id, text }) => (
                   <li key={id}>
-                    <HoverText text={text} />
+                    <HoverText
+                      text={text}
+                      className={
+                        "text-white lg:text-2xl md:text-xl sm:text-lg text-sm"
+                      }
+                    />
                   </li>
                 ))}
               </ul>
@@ -112,7 +119,12 @@ const Footer = () => {
                 </li>
                 {footer_2.map(({ id, text }) => (
                   <li key={id}>
-                    <HoverText text={text} />
+                    <HoverText
+                      text={text}
+                      className={
+                        "text-white lg:text-2xl md:text-xl sm:text-lg text-sm"
+                      }
+                    />
                   </li>
                 ))}
               </ul>

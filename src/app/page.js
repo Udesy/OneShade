@@ -27,12 +27,12 @@ const Page = () => {
     <>
       <Navbar />
       <Hero />
-      <About />
+      {/* <About /> */}
       <Gallery />
-      <Product />
+      {/* <Product />
       <Poster />
       <Testimonial />
-      <FAQ />
+      <FAQ /> */}
       <Footer />
     </>
   );

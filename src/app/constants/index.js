@@ -276,3 +276,22 @@ export const footer_2 = [
     text: "Privacy & Policy",
   },
 ];
+
+export const navOptions = [
+  {
+    id: 0,
+    text: "Home",
+  },
+  {
+    id: 1,
+    text: "About",
+  },
+  {
+    id: 2,
+    text: "Products",
+  },
+  {
+    id: 3,
+    text: "Contact",
+  },
+];
