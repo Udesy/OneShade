@@ -8,6 +8,7 @@ const Card = ({ src, product_name, product_price }) => {
         <Image
           src={src}
           fill
+          sizes="(max-width: 768px) 17rem, (max-width: 1024px) 22rem, 26rem"
           className="transition-all group-hover:scale-110 ease-out duration-500 transform-gpu"
           style={{
             transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",

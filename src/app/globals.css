@@ -56,9 +56,9 @@ body {
 
   .scroll-container {
     position: relative;
+    top: 0;
     width: 100%;
     height: 1200vh;
-    -webkit-overflow-scrolling: touch;
   }
 
   .element-center {
@@ -68,7 +68,7 @@ body {
   }
 
   .slider-text {
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -82,7 +82,7 @@ body {
   .slider {
     position: sticky;
     top: 0;
-    left: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
     z-index: 2;
@@ -99,49 +99,6 @@ body {
     will-change: transform, opacity;
   }
 
-  @media (max-width: 768px) {
-    .scroll-container {
-      overflow-x: hidden;
-      height: 800vh;
-    }
-
-    .slider {
-      perspective: 400px;
-    }
-
-    .slide {
-      position: absolute;
-      width: 200px;
-      height: 300px;
-      overflow: hidden;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .slider-text h1 span {
-      transform: translateX(-8px) !important;
-    }
-
-    .slider-text h1 span:nth-child(2) {
-      transform: translateX(8px) !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .scroll-container {
-      height: 600vh;
-    }
-
-    .slider {
-      perspective: 300px;
-    }
-
-    .slide {
-      width: 150px;
-      height: 225px;
-    }
-  }
 
 
 
@@ -272,5 +229,67 @@ body {
     transform: scaleX(0);
     transform-origin: right;
   }
+
+}
+
+.scroll-section {
+  position: relative;
+  background-color: #000000;
+  width: 100vw;
+  height: 100svh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.slider-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+}
+
+.img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  will-change: transform;
+}
+
+.slider-intro-header,
+.slider-outro-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 50%;
+}
+
+.slider-intro-header {
+  z-index: 1;
+}
+
+.slider-outro-header {
+  z-index: 10;
+}
+
+@media (max-width: 1000px) {
+
+  .slider-intro-header,
+  .slider-outro-header {
+    width: 100%;
+  }
+
+  .slider-intro-header,
+  .slider-outro-header {
+    padding: 2rem;
+  }
+
 
 }

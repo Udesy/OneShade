@@ -31,37 +31,55 @@ const Logo = ({ className, footer, isOpen, ...props }) => {
 
   useEffect(() => {
     if (footer && letterRefs.current.length && svgRef.current) {
-      // Set initial state for all letters
-      gsap.set(letterRefs.current, { opacity: 0.1, y: 150 });
+      // Wait for fonts to load before initializing animations
+      const initAnimation = () => {
+        // Set initial state for all letters
+        gsap.set(letterRefs.current, { opacity: 0.1, y: 150 });
 
-      const isSmallScreen =
-        typeof window !== "undefined" &&
-        window.matchMedia &&
-        window.matchMedia("(max-width: 639px)").matches;
+        const isSmallScreen =
+          typeof window !== "undefined" &&
+          window.matchMedia &&
+          window.matchMedia("(max-width: 639px)").matches;
 
-      if (isSmallScreen) {
-        gsap.to(letterRefs.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.16,
-          ease: "power2.inOut",
-          delay: 0.2,
+        try {
+          if (isSmallScreen) {
+            gsap.to(letterRefs.current, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.16,
+              ease: "power2.inOut",
+              delay: 0.2,
+            });
+          } else {
+            gsap.to(letterRefs.current, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.16,
+              ease: "power2.inOut",
+              delay: 0.2,
+              scrollTrigger: {
+                trigger: svgRef.current,
+                start: "top 85%",
+                once: true,
+              },
+            });
+          }
+        } catch (error) {
+          console.warn("Logo animation failed:", error);
+        }
+      };
+
+      // Check if fonts are loaded
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          // Small delay to ensure DOM is fully ready
+          setTimeout(initAnimation, 200);
         });
       } else {
-        gsap.to(letterRefs.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.16,
-          ease: "power2.inOut",
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: svgRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        });
+        // Fallback for browsers without font loading API
+        setTimeout(initAnimation, 1000);
       }
     }
   }, [footer]);

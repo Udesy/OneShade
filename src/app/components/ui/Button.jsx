@@ -1,9 +1,10 @@
 import React from "react";
 import * as motion from "motion/react-client";
 
-const Button = ({ content, text, isOpen, className, onClick }) => {
+const Button = ({ content, text, isOpen, className, onClick, ref }) => {
   return text ? (
     <button
+      ref={ref}
       className={`relative bg-white px-3 py-2 text-black rounded-[6px] flex flex-row flex-nowrap items-center w-fit space-x-2 cursor-pointer group ${className}`}
       onClick={onClick}
     >

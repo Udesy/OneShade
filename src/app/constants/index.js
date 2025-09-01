@@ -1,4 +1,3 @@
-// For Next.js, use the path relative to the public folder
 const Image1 = "/images/about-section/image1.jpg";
 const Image2 = "/images/about-section/image2.jpg";
 const Image3 = "/images/about-section/image3.jpg";
@@ -71,6 +70,13 @@ export const slide_images = [
   "/images/slide-section/image6.jpg",
   "/images/slide-section/image7.jpg",
   "/images/slide-section/image8.jpg",
+  "/images/slide-section/image9.jpg",
+  "/images/slide-section/image10.jpg",
+  "/images/slide-section/image11.jpg",
+  "/images/slide-section/image12.jpg",
+  "/images/slide-section/image13.jpg",
+  "/images/slide-section/image14.jpg",
+  "/images/slide-section/image15.jpg",
 ];
 
 export const product_list = [
@@ -293,5 +299,32 @@ export const navOptions = [
   {
     id: 3,
     text: "Contact",
+  },
+];
+
+export const loader_image = [
+  {
+    id: 0,
+    src: "/images/loader-section/image1.jpg",
+    className:
+      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-[-5deg] z-0",
+  },
+  {
+    id: 1,
+    src: "/images/loader-section/image2.jpg",
+    className:
+      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-[2deg] z-10",
+  },
+  {
+    id: 2,
+    src: "/images/loader-section/image3.jpg",
+    className:
+      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-[-1deg] z-20",
+  },
+  {
+    id: 3,
+    src: "/images/loader-section/image4.jpg",
+    className:
+      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-[3deg] -translate-x-1 z-30",
   },
 ];

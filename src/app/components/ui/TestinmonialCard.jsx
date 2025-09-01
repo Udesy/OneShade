@@ -9,7 +9,13 @@ const TestinmonialCard = ({ name, address, img_src, content }) => {
       </div>
       <div className="flex flex-row items-center space-x-4 mt-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden">
-          <Image src={img_src} fill className="object-cover" alt={name} />
+          <Image
+            src={img_src}
+            fill
+            sizes="64px"
+            className="object-cover"
+            alt={name}
+          />
         </div>
         <div>
           <h3>{name}</h3>

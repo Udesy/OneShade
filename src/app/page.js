@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Lenis from "lenis";
@@ -11,8 +11,11 @@ import Poster from "./components/Poster";
 import Testimonial from "./components/Testimonial";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 const Page = () => {
+  const [loadingDone, setLoadingDone] = useState(false);
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -25,14 +28,15 @@ const Page = () => {
   }, []);
   return (
     <>
-      <Navbar />
-      <Hero />
-      {/* <About /> */}
+      {!loadingDone && <Loader onComplete={() => setLoadingDone(true)} />}
+      <Navbar animate={loadingDone} />
+      <Hero animate={loadingDone} />
+      <About />
       <Gallery />
-      {/* <Product />
+      <Product />
       <Poster />
       <Testimonial />
-      <FAQ /> */}
+      <FAQ />
       <Footer />
     </>
   );

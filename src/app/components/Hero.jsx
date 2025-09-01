@@ -1,20 +1,47 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "./ui/Button";
-import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { useScroll, useTransform, motion } from "motion/react";
-import Parallax from "./Parallax";
 import Image from "next/image";
 
 // Define the Hero component function
-const Hero = () => {
+const Hero = ({ animate }) => {
   const containerRef = useRef(null);
-  const addToRefs = useRef(null);
+  const addToRefs = useRef([]);
+  const buttonRef = useRef(null);
 
-  // You can add your hooks and logic here
+  useEffect(() => {
+    // Only set GSAP properties if refs are available
+    if (addToRefs.current && addToRefs.current.length > 0) {
+      gsap.set(addToRefs.current, { y: 20, opacity: 0 });
+    }
+    if (buttonRef.current) {
+      gsap.set(buttonRef.current, { opacity: 0 });
+    }
+  }, []);
+
+  useEffect(() => {
+    // Only animate if refs are available and animate is true
+    if (!animate || !addToRefs.current || !buttonRef.current) return;
+
+    const tl = gsap.timeline();
+
+    try {
+      tl.to(addToRefs.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power4.inOut",
+      });
+
+      tl.to(buttonRef.current, {
+        opacity: 1,
+      });
+    } catch (error) {
+      console.warn("Hero animation failed:", error);
+    }
+  }, [animate]);
 
   return (
     <section className="relative flex justify-center items-center h-screen w-full">
@@ -47,14 +74,29 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
         <div className="relative flex flex-col space-y-6 sm:space-y-8 md:space-y-10 element-center px-4 sm:px-6">
           <div className="hero-text flex-col element-center overflow-hidden font-unbounded font-normal">
-            <h1 className="text-center overflow-hidden " ref={addToRefs}>
+            <h1
+              className="text-center overflow-hidden "
+              ref={(el) => {
+                if (addToRefs.current) {
+                  el && addToRefs.current.push(el);
+                }
+              }}
+            >
               Effortless Style.
             </h1>
-            <h1 className="text-center overflow-hidden" ref={addToRefs}>
+            <h1
+              className="text-center overflow-hidden"
+              ref={(el) => {
+                if (addToRefs.current) {
+                  el && addToRefs.current.push(el);
+                }
+              }}
+            >
               Pure Quality
             </h1>
           </div>
           <Button
+            ref={buttonRef}
             content={"Shop Now"}
             text={true}
             className={"text-xl sm:text-2xl"}

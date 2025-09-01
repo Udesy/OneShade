@@ -1,3 +1,5 @@
+"use client";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -5,44 +7,73 @@ import { SplitText } from "gsap/SplitText";
 import Image from "next/image";
 import React, { useRef } from "react";
 
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
 const Poster = () => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
 
-  gsap.registerPlugin(SplitText, ScrollTrigger);
-
   useGSAP(
     () => {
-      const splitText = new SplitText(textRef.current, {
-        type: "lines",
-        linesClass: "lines",
-      });
+      // Wait for fonts to load before creating SplitText
+      const initSplitText = () => {
+        if (!textRef.current) return;
 
-      // Set initial state for the LINES, not the splitText object
-      gsap.set(splitText.lines, {
-        opacity: 0,
-        y: 100,
-      });
+        // Additional check to ensure element has text content
+        if (!textRef.current.textContent || !textRef.current.textContent.trim())
+          return;
 
-      // Animate the LINES, not the splitText object
-      gsap.to(splitText.lines, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 20%",
-          once: true,
-          fastScrollEnd: true, // correct property name
-        },
-      });
+        try {
+          const splitText = new SplitText(textRef.current, {
+            type: "lines",
+            linesClass: "lines",
+          });
 
-      // Cleanup function
-      return () => {
-        if (splitText) splitText.revert();
+          // Check if lines were created successfully
+          if (!splitText.lines || splitText.lines.length === 0) {
+            console.warn("No lines created by SplitText");
+            return;
+          }
+
+          gsap.set(splitText.lines, {
+            opacity: 0,
+            y: 100,
+          });
+
+          // Animate the LINES, not the splitText object
+          gsap.to(splitText.lines, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 10%",
+            },
+          });
+
+          // Cleanup function
+          return () => {
+            if (splitText) splitText.revert();
+            // Cleanup ScrollTrigger instances
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          };
+        } catch (error) {
+          console.warn("SplitText animation failed:", error);
+        }
       };
+
+      // Check if fonts are loaded
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          // Longer delay to ensure fonts are fully rendered
+          setTimeout(initSplitText, 500);
+        });
+      } else {
+        // Fallback for browsers without font loading API
+        setTimeout(initSplitText, 1500);
+      }
     },
     { scope: containerRef }
   );
@@ -64,6 +95,7 @@ const Poster = () => {
             src={"/images/poster-section/poster.jpg"}
             fill
             alt="poster"
+            sizes="100vw"
             className="object-cover"
           />
         </div>

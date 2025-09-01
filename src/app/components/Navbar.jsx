@@ -1,17 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "./ui/Button";
 import Logo from "./Logo";
 import { navItem } from "../constants";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
+import gsap from "gsap";
 
-const Navbar = () => {
+const Navbar = ({ animate }) => {
   const [isOpen, setisOpen] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    gsap.set(navRef.current, { opacity: 0 });
+  }, []);
+
+  useEffect(() => {
+    if (animate) {
+      gsap.to(navRef.current, {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power4.inOut",
+      });
+    }
+  }, [animate]);
 
   return (
-    <div className="absolute top-0 left-0 h-fit w-full z-50 section-padding">
+    <div
+      className="absolute top-0 left-0 h-fit w-full z-50 section-padding"
+      ref={navRef}
+    >
       <div className="w-full h-full flex flex-row justify-between">
         <div className="w-44 h-12 overflow-clip relative z-50">
           <Logo className={""} isOpen={isOpen} />
